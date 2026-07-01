@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Basant Dhama — Software Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Fira+Code&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0f0c29;
+    --bg2: #302b63;
+    --bg3: #24243e;
+    --accent: #00e5ff;
+    --accent2: #ff4dcb;
+    --text: #e8ecf1;
+    --muted: #a5adba;
+    --card: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.12);
+  }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Poppins', system-ui, sans-serif;
+    color: var(--text);
+    background: linear-gradient(-45deg, var(--bg), var(--bg2), var(--bg3), #1a1a40);
+    background-size: 400% 400%;
+    animation: gradientShift 18s ease infinite;
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  @keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* floating orbs */
+  .orb { position: fixed; border-radius: 50%; filter: blur(80px); opacity: .5; z-index: 0; pointer-events: none; }
+  .orb.a { width: 380px; height: 380px; background: var(--accent); top: -80px; left: -80px; animation: float 12s ease-in-out infinite; }
+  .orb.b { width: 300px; height: 300px; background: var(--accent2); bottom: -60px; right: -60px; animation: float 15s ease-in-out infinite reverse; }
+  @keyframes float {
+    0%, 100% { transform: translate(0,0); }
+    50% { transform: translate(40px, 30px); }
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 2.5rem;
+    backdrop-filter: blur(12px);
+    background: rgba(15,12,41,0.55);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .logo {
+    font-weight: 800; font-size: 1.25rem;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    letter-spacing: 1px;
+  }
+  nav ul { list-style: none; display: flex; gap: 1.8rem; }
+  nav a {
+    color: var(--text); text-decoration: none; font-weight: 400; font-size: 0.95rem;
+    transition: color .2s ease; position: relative;
+  }
+  nav a::after {
+    content: ''; position: absolute; left: 0; bottom: -6px; height: 2px; width: 0;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transition: width .3s ease;
+  }
+  nav a:hover { color: var(--accent); }
+  nav a:hover::after { width: 100%; }
+
+  main { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+  /* HERO */
+  .hero { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: center; padding: 3rem 0 4rem; }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 800; line-height: 1.15; margin-bottom: 0.8rem;
+  }
+  .hero h1 .name {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p.role { font-size: 1.15rem; color: var(--muted); margin-bottom: 1.4rem; }
+  .hero p.role .typed { color: var(--accent); border-right: 2px solid var(--accent); padding-right: 4px; animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { border-color: transparent; } }
+  .hero p.bio { color: var(--muted); margin-bottom: 1.8rem; max-width: 55ch; }
+  .cta { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 0.75rem 1.4rem; border-radius: 999px;
+    text-decoration: none; font-weight: 600; font-size: 0.95rem;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .btn.primary {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    color: #0f0c29;
+    box-shadow: 0 8px 24px rgba(0,229,255,0.25);
+  }
+  .btn.ghost { border: 1px solid var(--border); color: var(--text); }
+  .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(255,77,203,0.25); }
+
+  .avatar {
+    justify-self: center;
+    width: 260px; height: 260px; border-radius: 50%;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent 60%),
+      linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5.5rem; font-weight: 800; color: #0f0c29;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35), inset 0 0 40px rgba(255,255,255,0.15);
+    animation: pulse 4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 20px 60px rgba(0,0,0,0.35), inset 0 0 40px rgba(255,255,255,0.15); }
+    50% { transform: scale(1.03); box-shadow: 0 25px 80px rgba(0,229,255,0.35), inset 0 0 60px rgba(255,255,255,0.2); }
+  }
+
+  /* SECTIONS */
+  section { padding: 3rem 0; }
+  section h2 {
+    font-size: 2rem; font-weight: 800; margin-bottom: 1.6rem;
+    display: inline-block;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  section h2::before { content: '// '; color: var(--muted); font-family: 'Fira Code', monospace; font-weight: 400; -webkit-text-fill-color: var(--muted); }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    transition: transform .25s ease, border-color .25s ease;
+  }
+  .card:hover { transform: translateY(-6px); border-color: var(--accent); }
+  .card h3 { margin-bottom: 0.6rem; font-size: 1.15rem; }
+  .card p { color: var(--muted); font-size: 0.95rem; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
+  .skill { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem; }
+  .skill .top { display: flex; justify-content: space-between; margin-bottom: 0.6rem; font-weight: 600; }
+  .skill .bar { height: 8px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; }
+  .skill .fill {
+    height: 100%; width: 0;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 999px;
+    transition: width 1.4s cubic-bezier(.2,.8,.2,1);
+  }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  .chip {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.82rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(0,229,255,0.08);
+    border: 1px solid rgba(0,229,255,0.25);
+    color: var(--accent);
+  }
+
+  /* EXPERIENCE */
+  .timeline { position: relative; padding-left: 1.6rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 6px; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(180deg, var(--accent), var(--accent2));
+  }
+  .timeline .item { position: relative; margin-bottom: 1.6rem; padding-left: 1rem; }
+  .timeline .item::before {
+    content: ''; position: absolute; left: -1.05rem; top: 8px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent);
+    box-shadow: 0 0 0 4px rgba(0,229,255,0.15);
+  }
+  .timeline .item h4 { font-size: 1.05rem; }
+  .timeline .item span.date { font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--muted); }
+  .timeline .item p { color: var(--muted); margin-top: 0.3rem; font-size: 0.95rem; }
+
+  /* PROJECTS */
+  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+  .project { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.4rem; transition: transform .25s ease, border-color .25s ease; }
+  .project:hover { transform: translateY(-6px); border-color: var(--accent2); }
+  .project h4 { margin-bottom: 0.5rem; }
+  .project p { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.8rem; }
+  .project .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .project .tags span { font-size: 0.72rem; padding: 0.2rem 0.55rem; border-radius: 6px; background: rgba(255,77,203,0.12); color: var(--accent2); font-family: 'Fira Code', monospace; }
+
+  /* CONTACT */
+  .contact-box { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; text-align: center; backdrop-filter: blur(10px); }
+  .contact-box p { color: var(--muted); margin-bottom: 1.2rem; }
+  .socials { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .socials a {
+    color: var(--text); text-decoration: none; font-weight: 500;
+    padding: 0.6rem 1.1rem; border-radius: 999px;
+    border: 1px solid var(--border);
+    transition: all .2s ease;
+  }
+  .socials a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  footer { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 2rem 0 1rem; }
+  footer .heart { color: var(--accent2); }
+
+  @media (max-width: 780px) {
+    nav ul { display: none; }
+    .hero { grid-template-columns: 1fr; text-align: center; }
+    .avatar { width: 200px; height: 200px; font-size: 4rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .cta { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+  <div class="orb a"></div>
+  <div class="orb b"></div>
+
+  <nav>
+    <div class="logo">&lt;/ Basant Dhama&gt;</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>Hi, I'm <span class="name">Basant Dhama</span> 👋</h1>
+        <p class="role">I build <span class="typed" id="typed">scalable backends</span></p>
+        <p class="bio">
+          A passionate software developer who loves crafting clean, reliable, and
+          high-performance systems. I enjoy solving complex problems, designing
+          resilient APIs, and turning caffeine into code.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Get in touch</a>
+          <a class="btn ghost" href="#projects">View projects</a>
+        </div>
+      </div>
+      <div class="avatar" aria-label="Avatar">BD</div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About me</h2>
+      <div class="about-grid">
+        <div class="card">
+          <h3>👨‍💻 Who I am</h3>
+          <p>A backend-leaning full-stack developer with a love for Java, Spring Boot,
+             microservices, and elegant architectures that scale.</p>
+        </div>
+        <div class="card">
+          <h3>🚀 What I do</h3>
+          <p>Design and build RESTful APIs, event-driven systems, cloud-native
+             applications, and developer tooling that just works.</p>
+        </div>
+        <div class="card">
+          <h3>🎯 Focus</h3>
+          <p>Clean code, testability, observability, and performance — because software
+             should be a joy to run and to read.</p>
+        </div>
+        <div class="card">
+          <h3>🌱 Currently learning</h3>
+          <p>Advanced Kubernetes patterns, Rust, and distributed systems design at scale.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill"><div class="top"><span>Java / Spring Boot</span><span>95%</span></div><div class="bar"><div class="fill" data-fill="95"></div></div></div>
+        <div class="skill"><div class="top"><span>Microservices</span><span>90%</span></div><div class="bar"><div class="fill" data-fill="90"></div></div></div>
+        <div class="skill"><div class="top"><span>REST APIs / OpenAPI</span><span>92%</span></div><div class="bar"><div class="fill" data-fill="92"></div></div></div>
+        <div class="skill"><div class="top"><span>SQL / NoSQL</span><span>85%</span></div><div class="bar"><div class="fill" data-fill="85"></div></div></div>
+        <div class="skill"><div class="top"><span>Docker / Kubernetes</span><span>80%</span></div><div class="bar"><div class="fill" data-fill="80"></div></div></div>
+        <div class="skill"><div class="top"><span>CI/CD</span><span>82%</span></div><div class="bar"><div class="fill" data-fill="82"></div></div></div>
+        <div class="skill"><div class="top"><span>JavaScript / TypeScript</span><span>78%</span></div><div class="bar"><div class="fill" data-fill="78"></div></div></div>
+        <div class="skill"><div class="top"><span>Cloud (AWS / Azure)</span><span>75%</span></div><div class="bar"><div class="fill" data-fill="75"></div></div></div>
+      </div>
+
+      <div class="chips">
+        <span class="chip">Java</span>
+        <span class="chip">Spring Boot</span>
+        <span class="chip">Kotlin</span>
+        <span class="chip">Kafka</span>
+        <span class="chip">PostgreSQL</span>
+        <span class="chip">MongoDB</span>
+        <span class="chip">Redis</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Kubernetes</span>
+        <span class="chip">Maven</span>
+        <span class="chip">Git</span>
+        <span class="chip">JUnit</span>
+        <span class="chip">GraphQL</span>
+        <span class="chip">React</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">Linux</span>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="item">
+          <h4>Senior Software Engineer</h4>
+          <span class="date">2023 — Present</span>
+          <p>Leading design and development of scalable support-suite microservices,
+             mentoring engineers, and driving quality &amp; observability initiatives.</p>
+        </div>
+        <div class="item">
+          <h4>Software Engineer</h4>
+          <span class="date">2020 — 2023</span>
+          <p>Built distributed backend services with Spring Boot, Kafka, and Kubernetes.
+             Delivered high-throughput APIs powering enterprise customer workflows.</p>
+        </div>
+        <div class="item">
+          <h4>Junior Developer</h4>
+          <span class="date">2018 — 2020</span>
+          <p>Contributed to full-stack features, automated testing, and CI/CD pipelines
+             across multiple product teams.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project">
+          <h4>🎯 Support Incidents API</h4>
+          <p>A resilient microservice for managing incident lifecycles with rich
+             OpenAPI contracts and event-driven notifications.</p>
+          <div class="tags"><span>Java</span><span>Spring Boot</span><span>Kafka</span></div>
+        </div>
+        <div class="project">
+          <h4>⚡ Realtime Dashboard</h4>
+          <p>Low-latency observability dashboard streaming metrics via WebSockets
+             with a clean, responsive UI.</p>
+          <div class="tags"><span>TypeScript</span><span>React</span><span>WebSocket</span></div>
+        </div>
+        <div class="project">
+          <h4>🔐 Auth Gateway</h4>
+          <p>Pluggable authentication gateway with OAuth2, JWT, and fine-grained
+             policy enforcement.</p>
+          <div class="tags"><span>Spring Security</span><span>OAuth2</span><span>Redis</span></div>
+        </div>
+        <div class="project">
+          <h4>🧪 Test Data Studio</h4>
+          <p>Developer tool for generating and managing realistic test fixtures
+             across environments.</p>
+          <div class="tags"><span>Java</span><span>PostgreSQL</span><span>CLI</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Let's connect</h2>
+      <div class="contact-box">
+        <p>Open to interesting problems, collaborations, and coffee-fueled conversations.</p>
+        <div class="socials">
+          <a href="mailto:basant.dhama@example.com">✉️ Email</a>
+          <a href="https://github.com/" target="_blank" rel="noopener">🐙 GitHub</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">💼 LinkedIn</a>
+          <a href="https://twitter.com/" target="_blank" rel="noopener">🐦 Twitter</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Made with <span class="heart">♥</span> by Basant Dhama · © <span id="year"></span>
+    </footer>
+  </main>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Typed role
+  const roles = ['scalable backends', 'clean APIs', 'cloud-native apps', 'delightful tools', 'reliable systems'];
+  const typedEl = document.getElementById('typed');
+  let ri = 0, ci = 0, deleting = false;
+  function tick() {
+    const word = roles[ri];
+    typedEl.textContent = word.slice(0, ci);
+    if (!deleting && ci < word.length) { ci++; setTimeout(tick, 70); }
+    else if (deleting && ci > 0) { ci--; setTimeout(tick, 35); }
+    else {
+      if (!deleting) { deleting = true; setTimeout(tick, 1200); }
+      else { deleting = false; ri = (ri + 1) % roles.length; setTimeout(tick, 250); }
+    }
+  }
+  tick();
+
+  // Animate skill bars on view
+  const bars = document.querySelectorAll('.fill');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.width = e.target.dataset.fill + '%';
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(b => io.observe(b));
+
+  // Smooth scroll for nav
+  document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+</body>
+</html>
+
