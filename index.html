@@ -3,64 +3,67 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Basant Dhama — Software Developer</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Fira+Code&display=swap" rel="stylesheet">
+<title>Basant Raj Dhama — Software Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #0f0c29;
-    --bg2: #302b63;
-    --bg3: #24243e;
+    --bg: #050505;
     --accent: #00e5ff;
-    --accent2: #ff4dcb;
-    --text: #e8ecf1;
-    --muted: #a5adba;
-    --card: rgba(255,255,255,0.06);
-    --border: rgba(255,255,255,0.12);
+    --accent2: #ff2d95;
+    --text: #f2f4f7;
+    --muted: #8b909a;
+    --card: rgba(255,255,255,0.035);
+    --border: rgba(255,255,255,0.09);
   }
   html, body { height: 100%; }
   body {
-    font-family: 'Poppins', system-ui, sans-serif;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
     color: var(--text);
-    background: linear-gradient(-45deg, var(--bg), var(--bg2), var(--bg3), #1a1a40);
-    background-size: 400% 400%;
-    animation: gradientShift 18s ease infinite;
+    background: var(--bg);
     min-height: 100vh;
-    line-height: 1.6;
+    line-height: 1.65;
     overflow-x: hidden;
   }
-  @keyframes gradientShift {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+
+  /* subtle grid fading into pure black */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 75%);
+    -webkit-mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 75%);
   }
 
-  /* floating orbs */
-  .orb { position: fixed; border-radius: 50%; filter: blur(80px); opacity: .5; z-index: 0; pointer-events: none; }
-  .orb.a { width: 380px; height: 380px; background: var(--accent); top: -80px; left: -80px; animation: float 12s ease-in-out infinite; }
-  .orb.b { width: 300px; height: 300px; background: var(--accent2); bottom: -60px; right: -60px; animation: float 15s ease-in-out infinite reverse; }
+  /* floating glow orbs */
+  .orb { position: fixed; border-radius: 50%; filter: blur(110px); opacity: .28; z-index: 0; pointer-events: none; }
+  .orb.a { width: 420px; height: 420px; background: var(--accent); top: -120px; left: -100px; animation: float 14s ease-in-out infinite; }
+  .orb.b { width: 340px; height: 340px; background: var(--accent2); bottom: -80px; right: -80px; animation: float 17s ease-in-out infinite reverse; }
   @keyframes float {
     0%, 100% { transform: translate(0,0); }
-    50% { transform: translate(40px, 30px); }
+    50% { transform: translate(50px, 35px); }
   }
 
   nav {
     position: sticky; top: 0; z-index: 10;
     display: flex; justify-content: space-between; align-items: center;
     padding: 1rem 2.5rem;
-    backdrop-filter: blur(12px);
-    background: rgba(15,12,41,0.55);
+    backdrop-filter: blur(14px);
+    background: rgba(5,5,5,0.72);
     border-bottom: 1px solid var(--border);
   }
   nav .logo {
-    font-weight: 800; font-size: 1.25rem;
+    font-weight: 700; font-size: 1.2rem; font-family: 'Fira Code', monospace;
     background: linear-gradient(90deg, var(--accent), var(--accent2));
     -webkit-background-clip: text; background-clip: text; color: transparent;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
   }
   nav ul { list-style: none; display: flex; gap: 1.8rem; }
   nav a {
-    color: var(--text); text-decoration: none; font-weight: 400; font-size: 0.95rem;
+    color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.92rem;
     transition: color .2s ease; position: relative;
   }
   nav a::after {
@@ -68,146 +71,171 @@
     background: linear-gradient(90deg, var(--accent), var(--accent2));
     transition: width .3s ease;
   }
-  nav a:hover { color: var(--accent); }
+  nav a:hover { color: var(--text); }
   nav a:hover::after { width: 100%; }
 
-  main { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+  main { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
 
   /* HERO */
-  .hero { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: center; padding: 3rem 0 4rem; }
+  .hero { display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.5rem; align-items: center; padding: 3.5rem 0 4rem; }
+  .hero .tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--accent);
+    border: 1px solid rgba(0,229,255,0.25); background: rgba(0,229,255,0.06);
+    padding: 0.35rem 0.85rem; border-radius: 999px; margin-bottom: 1.2rem;
+  }
+  .hero .tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: blinkdot 1.6s ease-in-out infinite; }
+  @keyframes blinkdot { 50% { opacity: .3; } }
   .hero h1 {
-    font-size: clamp(2.2rem, 5vw, 3.6rem);
-    font-weight: 800; line-height: 1.15; margin-bottom: 0.8rem;
+    font-size: clamp(2.2rem, 5.2vw, 3.8rem);
+    font-weight: 700; line-height: 1.12; margin-bottom: 0.7rem; letter-spacing: -1px;
   }
   .hero h1 .name {
     background: linear-gradient(90deg, var(--accent), var(--accent2));
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  .hero p.role { font-size: 1.15rem; color: var(--muted); margin-bottom: 1.4rem; }
+  .hero p.role { font-size: 1.2rem; color: var(--muted); margin-bottom: 1.3rem; font-family: 'Fira Code', monospace; }
   .hero p.role .typed { color: var(--accent); border-right: 2px solid var(--accent); padding-right: 4px; animation: blink 1s step-end infinite; }
   @keyframes blink { 50% { border-color: transparent; } }
-  .hero p.bio { color: var(--muted); margin-bottom: 1.8rem; max-width: 55ch; }
+  .hero p.bio { color: var(--muted); margin-bottom: 1.8rem; max-width: 56ch; }
   .cta { display: flex; gap: 0.8rem; flex-wrap: wrap; }
   .btn {
-    display: inline-block; padding: 0.75rem 1.4rem; border-radius: 999px;
-    text-decoration: none; font-weight: 600; font-size: 0.95rem;
-    transition: transform .2s ease, box-shadow .2s ease;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.75rem 1.4rem; border-radius: 10px;
+    text-decoration: none; font-weight: 600; font-size: 0.92rem;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
   .btn.primary {
     background: linear-gradient(90deg, var(--accent), var(--accent2));
-    color: #0f0c29;
-    box-shadow: 0 8px 24px rgba(0,229,255,0.25);
+    color: #050505;
+    box-shadow: 0 8px 30px rgba(0,229,255,0.25);
   }
   .btn.ghost { border: 1px solid var(--border); color: var(--text); }
-  .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(255,77,203,0.25); }
+  .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn:hover { transform: translateY(-3px); }
 
   .avatar {
-    justify-self: center;
-    width: 260px; height: 260px; border-radius: 50%;
+    justify-self: center; position: relative;
+    width: 250px; height: 250px; border-radius: 24px;
     background:
-      radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent 60%),
-      linear-gradient(135deg, var(--accent), var(--accent2));
+      radial-gradient(circle at 30% 25%, rgba(255,255,255,0.12), transparent 60%),
+      linear-gradient(135deg, #111, #000);
+    border: 1px solid var(--border);
     display: flex; align-items: center; justify-content: center;
-    font-size: 5.5rem; font-weight: 800; color: #0f0c29;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.35), inset 0 0 40px rgba(255,255,255,0.15);
-    animation: pulse 4s ease-in-out infinite;
+    font-family: 'Fira Code', monospace;
+    font-size: 5rem; font-weight: 700;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(0,229,255,0.12);
+    animation: pulse 5s ease-in-out infinite;
+  }
+  .avatar span {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
   }
   @keyframes pulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 20px 60px rgba(0,0,0,0.35), inset 0 0 40px rgba(255,255,255,0.15); }
-    50% { transform: scale(1.03); box-shadow: 0 25px 80px rgba(0,229,255,0.35), inset 0 0 60px rgba(255,255,255,0.2); }
+    0%, 100% { transform: translateY(0); box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(0,229,255,0.12); }
+    50% { transform: translateY(-8px); box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 60px rgba(255,45,149,0.18); }
   }
 
   /* SECTIONS */
   section { padding: 3rem 0; }
   section h2 {
-    font-size: 2rem; font-weight: 800; margin-bottom: 1.6rem;
-    display: inline-block;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
+    font-size: 1.9rem; font-weight: 700; margin-bottom: 1.6rem;
+    display: inline-block; letter-spacing: -0.5px;
   }
-  section h2::before { content: '// '; color: var(--muted); font-family: 'Fira Code', monospace; font-weight: 400; -webkit-text-fill-color: var(--muted); }
+  section h2 .hash { color: var(--accent); font-family: 'Fira Code', monospace; font-weight: 400; margin-right: 0.4rem; }
 
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
   .card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 1.5rem;
-    backdrop-filter: blur(10px);
-    transition: transform .25s ease, border-color .25s ease;
+    transition: transform .25s ease, border-color .25s ease, background .25s ease;
   }
-  .card:hover { transform: translateY(-6px); border-color: var(--accent); }
-  .card h3 { margin-bottom: 0.6rem; font-size: 1.15rem; }
-  .card p { color: var(--muted); font-size: 0.95rem; }
+  .card:hover { transform: translateY(-6px); border-color: rgba(0,229,255,0.5); background: rgba(0,229,255,0.03); }
+  .card h3 { margin-bottom: 0.55rem; font-size: 1.1rem; }
+  .card p { color: var(--muted); font-size: 0.94rem; }
 
-  /* SKILLS */
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
-  .skill { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem; }
-  .skill .top { display: flex; justify-content: space-between; margin-bottom: 0.6rem; font-weight: 600; }
-  .skill .bar { height: 8px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; }
-  .skill .fill {
-    height: 100%; width: 0;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    border-radius: 999px;
-    transition: width 1.4s cubic-bezier(.2,.8,.2,1);
-  }
-
-  .chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  /* SKILLS — categorized chips */
+  .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem; }
+  .skill-group { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.3rem; transition: border-color .25s ease; }
+  .skill-group:hover { border-color: rgba(255,45,149,0.4); }
+  .skill-group h3 { font-size: 0.95rem; color: var(--accent); font-family: 'Fira Code', monospace; margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .chip {
     font-family: 'Fira Code', monospace;
-    font-size: 0.82rem;
-    padding: 0.4rem 0.85rem;
-    border-radius: 999px;
-    background: rgba(0,229,255,0.08);
-    border: 1px solid rgba(0,229,255,0.25);
-    color: var(--accent);
+    font-size: 0.78rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: var(--text);
+    transition: all .2s ease;
   }
+  .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
   /* EXPERIENCE */
-  .timeline { position: relative; padding-left: 1.6rem; }
+  .timeline { position: relative; padding-left: 1.8rem; }
   .timeline::before {
-    content: ''; position: absolute; left: 6px; top: 0; bottom: 0;
+    content: ''; position: absolute; left: 6px; top: 4px; bottom: 4px;
     width: 2px; background: linear-gradient(180deg, var(--accent), var(--accent2));
   }
-  .timeline .item { position: relative; margin-bottom: 1.6rem; padding-left: 1rem; }
+  .timeline .item { position: relative; margin-bottom: 2rem; padding-left: 1.2rem; }
   .timeline .item::before {
-    content: ''; position: absolute; left: -1.05rem; top: 8px;
+    content: ''; position: absolute; left: -1.35rem; top: 6px;
     width: 14px; height: 14px; border-radius: 50%;
     background: var(--bg); border: 2px solid var(--accent);
-    box-shadow: 0 0 0 4px rgba(0,229,255,0.15);
+    box-shadow: 0 0 0 4px rgba(0,229,255,0.12);
   }
-  .timeline .item h4 { font-size: 1.05rem; }
-  .timeline .item span.date { font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--muted); }
-  .timeline .item p { color: var(--muted); margin-top: 0.3rem; font-size: 0.95rem; }
+  .timeline .item h4 { font-size: 1.1rem; }
+  .timeline .item .company { color: var(--accent); font-weight: 500; font-size: 0.95rem; }
+  .timeline .item .meta { font-family: 'Fira Code', monospace; font-size: 0.78rem; color: var(--muted); margin: 0.25rem 0 0.7rem; }
+  .timeline .item ul { list-style: none; }
+  .timeline .item li { color: var(--muted); font-size: 0.92rem; padding-left: 1.1rem; position: relative; margin-bottom: 0.35rem; }
+  .timeline .item li::before { content: '▹'; position: absolute; left: 0; color: var(--accent); }
 
   /* PROJECTS */
-  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
-  .project { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.4rem; transition: transform .25s ease, border-color .25s ease; }
+  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.2rem; }
+  .project { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.6rem; transition: transform .25s ease, border-color .25s ease; }
   .project:hover { transform: translateY(-6px); border-color: var(--accent2); }
-  .project h4 { margin-bottom: 0.5rem; }
-  .project p { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.8rem; }
+  .project h4 { margin-bottom: 0.4rem; font-size: 1.15rem; }
+  .project .subtitle { font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.7rem; }
+  .project p { color: var(--muted); font-size: 0.92rem; margin-bottom: 1rem; }
   .project .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .project .tags span { font-size: 0.72rem; padding: 0.2rem 0.55rem; border-radius: 6px; background: rgba(255,77,203,0.12); color: var(--accent2); font-family: 'Fira Code', monospace; }
+  .project .tags span { font-size: 0.72rem; padding: 0.25rem 0.6rem; border-radius: 6px; background: rgba(255,45,149,0.1); color: var(--accent2); font-family: 'Fira Code', monospace; }
+
+  /* EDUCATION */
+  .edu { display: flex; align-items: center; gap: 1.2rem; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.4rem 1.6rem; }
+  .edu .icon { font-size: 2rem; }
+  .edu h4 { font-size: 1.05rem; }
+  .edu p { color: var(--muted); font-size: 0.9rem; }
+  .edu .meta { font-family: 'Fira Code', monospace; font-size: 0.78rem; color: var(--accent); }
 
   /* CONTACT */
-  .contact-box { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; text-align: center; backdrop-filter: blur(10px); }
-  .contact-box p { color: var(--muted); margin-bottom: 1.2rem; }
-  .socials { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .contact-box { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2.2rem; text-align: center; }
+  .contact-box p { color: var(--muted); margin-bottom: 1.4rem; }
+  .socials { display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; }
   .socials a {
-    color: var(--text); text-decoration: none; font-weight: 500;
-    padding: 0.6rem 1.1rem; border-radius: 999px;
+    color: var(--text); text-decoration: none; font-weight: 500; font-size: 0.9rem;
+    padding: 0.6rem 1.2rem; border-radius: 10px;
     border: 1px solid var(--border);
     transition: all .2s ease;
   }
   .socials a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
-  footer { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 2rem 0 1rem; }
+  footer { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 2.5rem 0 1rem; }
   footer .heart { color: var(--accent2); }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
 
   @media (max-width: 780px) {
     nav ul { display: none; }
-    .hero { grid-template-columns: 1fr; text-align: center; }
-    .avatar { width: 200px; height: 200px; font-size: 4rem; }
+    nav { padding: 1rem 1.4rem; }
+    .hero { grid-template-columns: 1fr; text-align: center; padding-top: 2rem; }
+    .avatar { width: 190px; height: 190px; font-size: 3.6rem; order: -1; }
+    .hero .tag { margin-inline: auto; }
     .about-grid { grid-template-columns: 1fr; }
     .cta { justify-content: center; }
   }
@@ -218,12 +246,13 @@
   <div class="orb b"></div>
 
   <nav>
-    <div class="logo">&lt;/ Basant Dhama&gt;</div>
+    <div class="logo">&lt;/ basant.dhama&gt;</div>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -232,153 +261,273 @@
     <!-- HERO -->
     <section class="hero">
       <div>
-        <h1>Hi, I'm <span class="name">Basant Dhama</span> 👋</h1>
+        <span class="tag"><span class="dot"></span> Available for interesting problems</span>
+        <h1>Hi, I'm <span class="name">Basant Raj Dhama</span> 👋</h1>
         <p class="role">I build <span class="typed" id="typed">scalable backends</span></p>
         <p class="bio">
-          A passionate software developer who loves crafting clean, reliable, and
-          high-performance systems. I enjoy solving complex problems, designing
-          resilient APIs, and turning caffeine into code.
+          Software Engineer skilled in Java, Spring Boot &amp; cloud-native development,
+          focused on delivering efficient and secure solutions for large-scale systems.
+          Familiar with GraphQL and Kafka — and always learning what's next, currently
+          diving deep into AI &amp; developer productivity tooling.
         </p>
         <div class="cta">
           <a class="btn primary" href="#contact">Get in touch</a>
           <a class="btn ghost" href="#projects">View projects</a>
         </div>
       </div>
-      <div class="avatar" aria-label="Avatar">BD</div>
+      <div class="avatar" aria-label="Avatar"><span>BD</span></div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about">
-      <h2>About me</h2>
+    <section id="about" class="reveal">
+      <h2><span class="hash">#</span>About me</h2>
       <div class="about-grid">
         <div class="card">
           <h3>👨‍💻 Who I am</h3>
-          <p>A backend-leaning full-stack developer with a love for Java, Spring Boot,
-             microservices, and elegant architectures that scale.</p>
+          <p>A backend-focused software engineer based in Rotterdam, passionate about
+             Java, Spring Boot, microservices, and architectures that scale cleanly and
+             securely.</p>
         </div>
         <div class="card">
           <h3>🚀 What I do</h3>
-          <p>Design and build RESTful APIs, event-driven systems, cloud-native
-             applications, and developer tooling that just works.</p>
+          <p>Design and build cloud-native applications and event-driven systems —
+             owning the full lifecycle from solution design and implementation to
+             deployment, testing, and operations.</p>
         </div>
         <div class="card">
           <h3>🎯 Focus</h3>
-          <p>Clean code, testability, observability, and performance — because software
-             should be a joy to run and to read.</p>
+          <p>Clean architecture, SOLID principles, secure coding, observability, and
+             performance — backed by strong test coverage and continuous inspection.</p>
         </div>
         <div class="card">
-          <h3>🌱 Currently learning</h3>
-          <p>Advanced Kubernetes patterns, Rust, and distributed systems design at scale.</p>
+          <h3>🤖 Currently exploring</h3>
+          <p>AI &amp; developer productivity — Model Context Protocol (MCP), Spring AI,
+             LangChain4j, RAG, and agent-assisted development workflows.</p>
         </div>
       </div>
     </section>
 
     <!-- SKILLS -->
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="skills-grid">
-        <div class="skill"><div class="top"><span>Java / Spring Boot</span><span>95%</span></div><div class="bar"><div class="fill" data-fill="95"></div></div></div>
-        <div class="skill"><div class="top"><span>Microservices</span><span>90%</span></div><div class="bar"><div class="fill" data-fill="90"></div></div></div>
-        <div class="skill"><div class="top"><span>REST APIs / OpenAPI</span><span>92%</span></div><div class="bar"><div class="fill" data-fill="92"></div></div></div>
-        <div class="skill"><div class="top"><span>SQL / NoSQL</span><span>85%</span></div><div class="bar"><div class="fill" data-fill="85"></div></div></div>
-        <div class="skill"><div class="top"><span>Docker / Kubernetes</span><span>80%</span></div><div class="bar"><div class="fill" data-fill="80"></div></div></div>
-        <div class="skill"><div class="top"><span>CI/CD</span><span>82%</span></div><div class="bar"><div class="fill" data-fill="82"></div></div></div>
-        <div class="skill"><div class="top"><span>JavaScript / TypeScript</span><span>78%</span></div><div class="bar"><div class="fill" data-fill="78"></div></div></div>
-        <div class="skill"><div class="top"><span>Cloud (AWS / Azure)</span><span>75%</span></div><div class="bar"><div class="fill" data-fill="75"></div></div></div>
-      </div>
-
-      <div class="chips">
-        <span class="chip">Java</span>
-        <span class="chip">Spring Boot</span>
-        <span class="chip">Kotlin</span>
-        <span class="chip">Kafka</span>
-        <span class="chip">PostgreSQL</span>
-        <span class="chip">MongoDB</span>
-        <span class="chip">Redis</span>
-        <span class="chip">Docker</span>
-        <span class="chip">Kubernetes</span>
-        <span class="chip">Maven</span>
-        <span class="chip">Git</span>
-        <span class="chip">JUnit</span>
-        <span class="chip">GraphQL</span>
-        <span class="chip">React</span>
-        <span class="chip">Node.js</span>
-        <span class="chip">Linux</span>
+    <section id="skills" class="reveal">
+      <h2><span class="hash">#</span>Skills &amp; Technologies</h2>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3>💻 Languages</h3>
+          <div class="chips">
+            <span class="chip">Java</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">Python</span>
+            <span class="chip">SQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>⚙️ Frameworks &amp; Backend</h3>
+          <div class="chips">
+            <span class="chip">Spring Boot</span>
+            <span class="chip">Spring Security</span>
+            <span class="chip">Spring AI</span>
+            <span class="chip">RESTful APIs</span>
+            <span class="chip">Microservices</span>
+            <span class="chip">Event-Driven Arch</span>
+            <span class="chip">Distributed Systems</span>
+            <span class="chip">Clean Architecture</span>
+            <span class="chip">OOP / SOLID</span>
+            <span class="chip">DSA</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>🤖 AI &amp; Developer Productivity</h3>
+          <div class="chips">
+            <span class="chip">MCP (built &amp; integrated)</span>
+            <span class="chip">AWS MCP Servers</span>
+            <span class="chip">Kiro</span>
+            <span class="chip">Agent Skills</span>
+            <span class="chip">GitHub Copilot</span>
+            <span class="chip">LLM / AI Agents</span>
+            <span class="chip">Prompt Engineering</span>
+            <span class="chip">LangChain4j</span>
+            <span class="chip">RAG</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>🎨 Frontend</h3>
+          <div class="chips">
+            <span class="chip">Angular</span>
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>🗄️ Databases &amp; Caching</h3>
+          <div class="chips">
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">Supabase</span>
+            <span class="chip">Redis</span>
+            <span class="chip">Liquibase</span>
+            <span class="chip">ShedLock</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>📡 Messaging &amp; Communication</h3>
+          <div class="chips">
+            <span class="chip">REST</span>
+            <span class="chip">GraphQL</span>
+            <span class="chip">Kafka</span>
+            <span class="chip">RabbitMQ</span>
+            <span class="chip">OAuth</span>
+            <span class="chip">JWT</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>📄 API Design &amp; Docs</h3>
+          <div class="chips">
+            <span class="chip">OpenAPI</span>
+            <span class="chip">SwaggerUI</span>
+            <span class="chip">Postman</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>☁️ Cloud Platforms</h3>
+          <div class="chips">
+            <span class="chip">AWS</span>
+            <span class="chip">Google Cloud (GCP)</span>
+            <span class="chip">Cloud Foundry</span>
+            <span class="chip">Apigee</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>🚢 DevOps, CI/CD &amp; Containers</h3>
+          <div class="chips">
+            <span class="chip">Docker</span>
+            <span class="chip">Kubernetes</span>
+            <span class="chip">Jenkins</span>
+            <span class="chip">GitLab CI/CD</span>
+            <span class="chip">ArgoCD</span>
+            <span class="chip">Git</span>
+            <span class="chip">Bitbucket</span>
+            <span class="chip">Maven</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>📊 Monitoring &amp; Observability</h3>
+          <div class="chips">
+            <span class="chip">Prometheus</span>
+            <span class="chip">Grafana</span>
+            <span class="chip">Splunk</span>
+            <span class="chip">Loki</span>
+            <span class="chip">Opsgenie</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>🧪 Testing &amp; Quality</h3>
+          <div class="chips">
+            <span class="chip">JUnit</span>
+            <span class="chip">Mockito</span>
+            <span class="chip">WireMock</span>
+            <span class="chip">JMeter</span>
+            <span class="chip">Gatling</span>
+            <span class="chip">SonarQube</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>🔁 Methodologies &amp; Practices</h3>
+          <div class="chips">
+            <span class="chip">Agile / SAFe</span>
+            <span class="chip">Scrum</span>
+            <span class="chip">TDD</span>
+            <span class="chip">Performance Testing</span>
+            <span class="chip">Test Automation</span>
+            <span class="chip">Secure Coding</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="experience">
-      <h2>Experience</h2>
+    <section id="experience" class="reveal">
+      <h2><span class="hash">#</span>Work experience</h2>
       <div class="timeline">
         <div class="item">
-          <h4>Senior Software Engineer</h4>
-          <span class="date">2023 — Present</span>
-          <p>Leading design and development of scalable support-suite microservices,
-             mentoring engineers, and driving quality &amp; observability initiatives.</p>
+          <h4>Software Developer</h4>
+          <div class="company">Swisscom</div>
+          <div class="meta">Oct 2022 — Present · Rotterdam, Netherlands</div>
+          <ul>
+            <li>Designed and developed scalable, cloud-native applications with Spring Boot, owning the full lifecycle — including an OTT Platform Integration serving 1M+ customers across Switzerland.</li>
+            <li>Implemented caching in microservices, reducing API response times by ~40% and significantly cutting outbound service calls.</li>
+            <li>Led migration of on-premises infrastructure to AWS and the Jenkins-to-GitLab CI/CD migration, streamlining deployment across all environments.</li>
+            <li>Built and integrated Model Context Protocol (MCP) servers &amp; skills, leveraging AWS MCP via Kiro with agent skills and GitHub Copilot for AI-assisted development workflows.</li>
+            <li>Mentored 3 junior developers and interns while collaborating with cross-functional Tribes on delivery, E2E testing, and issue resolution.</li>
+            <li>Maintained 85%+ test coverage via secure coding and SonarQube; built detailed Grafana dashboards and alerting queries covering all error scenarios.</li>
+          </ul>
         </div>
         <div class="item">
-          <h4>Software Engineer</h4>
-          <span class="date">2020 — 2023</span>
-          <p>Built distributed backend services with Spring Boot, Kafka, and Kubernetes.
-             Delivered high-throughput APIs powering enterprise customer workflows.</p>
-        </div>
-        <div class="item">
-          <h4>Junior Developer</h4>
-          <span class="date">2018 — 2020</span>
-          <p>Contributed to full-stack features, automated testing, and CI/CD pipelines
-             across multiple product teams.</p>
+          <h4>Software Developer Intern</h4>
+          <div class="company">Swisscom</div>
+          <div class="meta">Dec 2020 — Sep 2022 · Riga, Latvia</div>
+          <ul>
+            <li>Developed several Spring Boot microservices from scratch — from solution design and testing to deployment.</li>
+            <li>Refactored legacy services into Spring Boot microservices, driving discussions with stakeholders.</li>
+            <li>Worked end-to-end on the Apigee platform and hosted many services.</li>
+            <li>Containerized and orchestrated microservices with Docker &amp; Kubernetes, optimizing scalability and resource allocation.</li>
+            <li>Resolved 30+ critical bugs, reducing platform downtime by 20%; conducted code reviews adhering to SOLID principles.</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects">
-      <h2>Projects</h2>
+    <section id="projects" class="reveal">
+      <h2><span class="hash">#</span>Projects</h2>
       <div class="projects">
         <div class="project">
-          <h4>🎯 Support Incidents API</h4>
-          <p>A resilient microservice for managing incident lifecycles with rich
-             OpenAPI contracts and event-driven notifications.</p>
-          <div class="tags"><span>Java</span><span>Spring Boot</span><span>Kafka</span></div>
-        </div>
-        <div class="project">
-          <h4>⚡ Realtime Dashboard</h4>
-          <p>Low-latency observability dashboard streaming metrics via WebSockets
-             with a clean, responsive UI.</p>
-          <div class="tags"><span>TypeScript</span><span>React</span><span>WebSocket</span></div>
+          <h4>🧠 AI-Powered Knowledge Assistant</h4>
+          <div class="subtitle">RAG Service · Personal Project</div>
+          <p>A Retrieval-Augmented Generation microservice built with Spring AI and
+             LangChain4j, integrating LLM APIs with a pgvector-backed PostgreSQL store
+             for semantic search and grounded, low-hallucination responses. Exposes
+             secure REST APIs (Spring Security, OAuth/JWT) documented with OpenAPI/SwaggerUI,
+             applying prompt engineering and MCP for standardised tool access.</p>
+          <div class="tags"><span>Spring AI</span><span>LangChain4j</span><span>RAG</span><span>pgvector</span><span>PostgreSQL</span><span>OAuth/JWT</span><span>MCP</span></div>
         </div>
         <div class="project">
           <h4>🔐 Auth Gateway</h4>
-          <p>Pluggable authentication gateway with OAuth2, JWT, and fine-grained
-             policy enforcement.</p>
-          <div class="tags"><span>Spring Security</span><span>OAuth2</span><span>Redis</span></div>
+          <div class="subtitle">Backend · Security</div>
+          <p>A pluggable authentication gateway with OAuth2, JWT, and fine-grained
+             policy enforcement — centralising secure access across microservices with
+             Redis-backed session and token handling.</p>
+          <div class="tags"><span>Spring Security</span><span>OAuth2</span><span>JWT</span><span>Redis</span></div>
         </div>
-        <div class="project">
-          <h4>🧪 Test Data Studio</h4>
-          <p>Developer tool for generating and managing realistic test fixtures
-             across environments.</p>
-          <div class="tags"><span>Java</span><span>PostgreSQL</span><span>CLI</span></div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="reveal">
+      <h2><span class="hash">#</span>Education</h2>
+      <div class="edu">
+        <div class="icon">🎓</div>
+        <div>
+          <h4>Bachelor of Engineering in Computer Systems</h4>
+          <p>Riga Technical University</p>
+          <div class="meta">2023 · Riga, Latvia</div>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact">
-      <h2>Let's connect</h2>
+    <section id="contact" class="reveal">
+      <h2><span class="hash">#</span>Let's connect</h2>
       <div class="contact-box">
         <p>Open to interesting problems, collaborations, and coffee-fueled conversations.</p>
         <div class="socials">
-          <a href="mailto:basant.dhama@example.com">✉️ Email</a>
-          <a href="https://github.com/" target="_blank" rel="noopener">🐙 GitHub</a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">💼 LinkedIn</a>
-          <a href="https://twitter.com/" target="_blank" rel="noopener">🐦 Twitter</a>
+          <a href="mailto:basantrajdhamacode@gmail.com">✉️ basantrajdhamacode@gmail.com</a>
+          <a href="tel:+31642040403">📱 +31 642040403</a>
+          <a href="https://www.linkedin.com/in/basantrajdhama/" target="_blank" rel="noopener">💼 LinkedIn</a>
         </div>
       </div>
     </section>
 
     <footer>
-      Made with <span class="heart">♥</span> by Basant Dhama · © <span id="year"></span>
+      Made with <span class="heart">♥</span> by Basant Raj Dhama · Rotterdam, NL · © <span id="year"></span>
     </footer>
   </main>
 
@@ -387,7 +536,7 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 
   // Typed role
-  const roles = ['scalable backends', 'clean APIs', 'cloud-native apps', 'delightful tools', 'reliable systems'];
+  const roles = ['scalable backends', 'cloud-native apps', 'secure APIs', 'event-driven systems', 'AI-assisted tools'];
   const typedEl = document.getElementById('typed');
   let ri = 0, ci = 0, deleting = false;
   function tick() {
@@ -396,23 +545,19 @@
     if (!deleting && ci < word.length) { ci++; setTimeout(tick, 70); }
     else if (deleting && ci > 0) { ci--; setTimeout(tick, 35); }
     else {
-      if (!deleting) { deleting = true; setTimeout(tick, 1200); }
+      if (!deleting) { deleting = true; setTimeout(tick, 1300); }
       else { deleting = false; ri = (ri + 1) % roles.length; setTimeout(tick, 250); }
     }
   }
   tick();
 
-  // Animate skill bars on view
-  const bars = document.querySelectorAll('.fill');
+  // Reveal sections on scroll
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.width = e.target.dataset.fill + '%';
-        io.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
     });
-  }, { threshold: 0.3 });
-  bars.forEach(b => io.observe(b));
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   // Smooth scroll for nav
   document.querySelectorAll('nav a[href^="#"]').forEach(a => {
